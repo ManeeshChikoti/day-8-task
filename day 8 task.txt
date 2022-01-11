@@ -1,0 +1,290 @@
+1.
+The class Movie is stated below.
+An instance of class Movie represents a film.
+This class has the following three properties:
+
+- title, which is a String representing the title of the movie
+- studio, which is a String representing the studio that made the movie
+- rating, which is a String representing the rating of the movie (i.e. PG­13, R, etc)
+
+a) Write a constructor for the class Movie, which takes a String representing the title of the movie, a String representing the studio, and a String representing the rating as its arguments, and sets the respective class properties to these values.
+
+b) The constructor for the class Movie will set the class property rating to "PG" as default when no rating is provided.
+
+c) Write a method getPG, which takes an array of base type Movie as its argument, and returns a new array of only those movies in the input array with a rating of "PG". You may assume the input array is full of Movie instances. The returned array need not be full.
+
+d) Write a piece of code that creates an instance of the class Movie with the title “Casino Royale”, the studio “Eon Productions”, and the rating “PG­13”
+
+
+ANSWER:
+
+class Movie{
+    //creating aconstuctor with default rating
+
+    constructor(title,studio,rating="PG")
+    {
+        this.title=title;
+        this.studio=studio;
+        this.rating=rating;
+    }
+    //creating a static method and passing an array with movie instances in it
+ static  getPG(Movie1){
+let ratingPG=[];
+    //   iterating over array and and pushing movies with rating PG into new array
+for(let i=0;i<Movie1.length;i++)
+{
+    if(Movie1[i].rating=="PG"){
+    ratingPG.push(Movie1[i]);
+    }
+}
+     return ratingPG;
+
+}
+}
+//creating instances of class Movie
+let film1=new Movie("spiderman","Marvel Studios","PG13");
+let film2=new Movie("pushpa","Mythri Movie Makers");
+let film3=new Movie("I Origins","Bersin pictures","R");
+let Movie1=[film1,film2,film3];
+ console.log(Movie.getPG(Movie1));
+ //creating instance of a movie with specified data and displaying it
+ let film4=new Movie("Casino Royale","Eon Productions","PG13");
+console.log(film4);
+
+OUTPUT:
+
+task81.js:29   [Movie]0: Movie {title: 'pushpa', studio: 'Mythri Movie Makers', rating: 'PG'}
+                 length: 1
+           [[Prototype]]: Array(0)
+
+task81.js:32   Movie {title: 'Casino Royale', studio: 'Eon Productions', rating: 'PG13'}
+
+2.Create a circle class by given diagram
+
+ANSWER:
+
+class Circle{
+constructor(radius=1.0,color="red"){
+    this.radius=radius;
+    this.color=color;
+}
+    getRadius()
+    {
+        console.log(`radius is ${this.radius}`);
+    }
+    setRadius(r)
+    {this.radius=r;
+     console.log(`newly set radius is ${this.radius}`);
+    }
+    getColor()
+    {
+        console.log(`color is ${this.color}`);
+    }
+    setcolor(color)
+    {
+        this.color=color;
+        console.log(` newly set color is ${this.color}`);
+    }
+    toString()
+    {
+        console.log(`Circle[radius=${this.radius},color=${this.color}]`);
+    }
+    getArea()
+    {
+     let area=Math.PI*this.radius*this.radius;
+      return `area is ${area}`;
+    }
+    getCircumference()
+    {
+     let circumference=2*Math.PI*this.radius;
+      return ` cicumferece of a circle is ${circumference}`;
+    }
+
+}
+let Circle1=new Circle();
+
+Circle1.getRadius();
+Circle1.setRadius(2.0);
+Circle1.getColor();
+Circle1.setcolor("blue");
+Circle1.toString();
+console.log(Circle1.getArea());
+console.log(Circle1.getCircumference());
+
+let Circle2=new Circle(3.0);
+
+Circle2.getColor();
+console.log(Circle2.getArea());
+console.log(Circle2.getCircumference());
+
+let Circle3=new Circle(4.0,"green");
+
+Circle3.getColor();
+console.log(Circle3.getArea());
+console.log(Circle3.getCircumference());
+
+OUTPUT:
+
+task82.js:8 radius is 1
+task82.js:12 newly set radius is 2
+task82.js:16 color is red
+task82.js:21  newly set color is blue
+task82.js:25 Circle[radius=2,color=blue]
+task82.js:46 area is 12.566370614359172
+task82.js:47  cicumferece of a circle is 12.566370614359172
+task82.js:16 color is red
+task82.js:52 area is 28.274333882308138
+task82.js:53  cicumferece of a circle is 18.84955592153876
+task82.js:16 color is green
+task82.js:58 area is 50.26548245743669
+task82.js:59  cicumferece of a circle is 25.132741228718345
+
+
+
+3.Write a “person” class to hold all the details.
+
+ANSWER:
+
+class Person{
+    static course="Mern Stack Developer"
+    constructor(name,age,email,phoneno){
+        this.name=name;
+        this.age=age;
+        this.email=email;
+        this.phoneno=phoneno;
+    }//instance method
+    getData(){
+        console.log(`my email is ${this.email}`);
+    }
+}
+class Student extends Person{
+    constructor(name,age,email,phoneno,college,studentid){
+        super(name,age,email,phoneno);
+        this.college=college;
+        this.studentid=studentid;
+    }//polymorphisim (same method name)
+    getData(){
+        console.log(`studentid is ${this.studentid}`);
+    }
+setData(email){
+    this.email=email;
+    console.log(`my new email is ${this.email}`);
+}//static method
+static coursedetails(){
+    console.log(`course is ${Person.course}`);
+}
+}
+let person1 = new Person("maneesh",25,"abc@gmail.com",1234567890);
+person1.getData();
+let student1=new Student("maneesh",25,"abc@gmail.com",1234567890,"st peters","ABC432");
+student1.getData();
+student1.setData("xyz@gmail.com");
+//calling static method using class name
+Student.coursedetails();
+
+
+OUTPUT:
+
+task83.js:10    my email is abc@gmail.com
+task83.js:20    studentid is ABC432
+task83.js:24    my new email is xyz@gmail.com
+task83.js:27    course is Mern Stack Developer
+
+
+4.write a class to calculate uber price.
+
+ANSWER:
+
+class Uber{
+     costpermin=2;
+    constructor(ridetime,drivekms,cartype,tollfee=0)
+    {
+        this.ridetime=ridetime;
+        this.drivekms=drivekms;
+        this.cartype=cartype;
+        this.tollfee=tollfee;
+    }//basefare and cost per km varies as the cartype changes
+   getbill()
+    {
+       if(this.cartype=="Ubergo")
+       {
+       let basefare=50;
+       let  costperkm=7;
+       let totalprice=basefare+(this.ridetime*this.costpermin)+(this.drivekms*costperkm)+this.tollfee;
+       console.log(`total price for the ride is ${totalprice}`);
+       }
+else if(this.cartype=="UberX")
+{
+let basefare=80;
+let  costperkm=8;
+let totalprice=basefare+(this.ridetime*this.costpermin)+(this.drivekms*costperkm)+this.tollfee;
+console.log(`total price for the ride  is ${totalprice}`);
+
+    }
+    else
+    {
+    let basefare=100;
+    let  costperkm=11;
+    let totalprice=basefare+(this.ridetime*this.costpermin)+(this.drivekms*costperkm)+this.tollfee;
+    console.log(`total price  for the ride is ${totalprice}`);
+    }
+}
+}
+let customer1=new Uber(15,20,"Ubergo",100);
+customer1.getbill();
+let customer2=new Uber(15,20,"Uberblack",100);
+customer2.getbill();
+let customer3=new Uber(15,25,"UberX");
+customer3.getbill();
+
+
+OUTPUT:
+
+task84.js:17 total price for the ride is 320
+task84.js:32 total price  for the ride is 450
+task84.js:24 total price for the ride  is 310
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
